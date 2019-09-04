@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Flash!</title>
+</head>
+<body>
+  <div id="flashcard-app" class="container">
+
+    <h1>Flashcard App!</h1>
+
+    <div class="flashcard-form">
+      <label for="front">Front
+        <input type="text" id="front">
+      </label>
+      <label for="back">Back
+        <input type="text" id="back">
+      </label>
+      <!--create a new card computed-->
+      <button>Add a New Card</button>
+      <!--error display none? to show only when one or both fields above is empty-->
+      <span class="error">Oops! Flashcards need a front and a back.</span>
+    </div>
+
+    <ul class="flashcard-list">
+      <li v-for="(card, index) in cards" v-on:click="flipCard(card, index)">
+        <p class="card" v-bind:class="card.flipped? 'flip-leave-active':'flip-enter-active'">
+            <span class="delete-card" v-on:click="deleteCard(index)">X</span>
+            {{ card.front }}
+        </p>
+        <!--back of card, class change-->
+        <p class="card" v-bind:class="card.flipped? 'flip-enter-active':'flip-leave-active'">
+            <span class="delete-card" v-on:click="deleteCard(index)">X</span>
+            {{ card.back }}
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
