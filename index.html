@@ -15,13 +15,13 @@
 
     <div class="flashcard-form">
       <label for="front">Front
-        <input type="text" id="front">
+        <input type="text" id="front" v-model="front">
       </label>
       <label for="back">Back
-        <input type="text" id="back">
+        <input type="text" id="back" v-model="back">
       </label>
       <!--create a new card computed-->
-      <button>Add a New Card</button>
+      <button v-on:click="addCard()">Add a New Card</button>
       <!--error display none? to show only when one or both fields above is empty-->
       <span class="error">Oops! Flashcards need a front and a back.</span>
     </div>

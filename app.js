@@ -26,6 +26,8 @@ const cards = [
     el: '#flashcard-app',
     data: {
       cards: cards,
+      front: '',
+      back: ''
     },
     methods: {
       //flipCard
@@ -34,6 +36,9 @@ const cards = [
       },
       deleteCard: function(index) {
         cards.splice(index, 1);
+      },
+      addCard: function() {
+        cards.push({front: this.front, back: this.back, flipped: false});
       }
     }
   });
