@@ -38,7 +38,11 @@ const cards = [
         cards.splice(index, 1);
       },
       addCard: function() {
-        cards.push({front: this.front, back: this.back, flipped: false});
+        cards.push({
+          front: this.front,
+          back: this.back,
+          flipped: false
+        });
       }
     }
   });

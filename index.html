@@ -18,7 +18,7 @@
         <input type="text" id="front" v-model="front">
       </label>
       <label for="back">Back
-        <input type="text" id="back" v-model="back">
+        <input type="text" id="back" v-model="back" v-on:keypress.enter="addCard()">
       </label>
       <!--create a new card computed-->
       <button v-on:click="addCard()">Add a New Card</button>
@@ -28,15 +28,17 @@
 
     <ul class="flashcard-list">
       <li v-for="(card, index) in cards" v-on:click="flipCard(card, index)">
-        <p class="card" v-bind:class="card.flipped? 'flip-leave-active':'flip-enter-active'">
-            <span class="delete-card" v-on:click="deleteCard(index)">X</span>
-            {{ card.front }}
-        </p>
-        <!--back of card, class change-->
-        <p class="card" v-bind:class="card.flipped? 'flip-enter-active':'flip-leave-active'">
-            <span class="delete-card" v-on:click="deleteCard(index)">X</span>
-            {{ card.back }}
-        </p>
+        <transition name="flip">
+          <p v-if="!card.flipped" class="card" key="front">
+              <span class="delete-card" v-on:click="deleteCard(index)">X</span>
+              {{ card.front }}
+          </p>
+          <!--back of card, class change-->
+          <p v-else class="card" key="back">
+              <span class="delete-card" v-on:click="deleteCard(index)">X</span>
+              {{ card.back }}
+          </p>
+      </transition>
       </li>
     </ul>
   </div>
