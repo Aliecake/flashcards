@@ -40,13 +40,14 @@ const cards = [
       },
       addCard: function() {
         if (!this._data.front || !this._data.back) {
-          this.error = !this.error;
+          this.error = true;
         } else {
           cards.push({
             front: this.front,
             back: this.back,
-            flipped: false
+            flipped: false,
           });
+          this.error = false;
         }
       }
     }
