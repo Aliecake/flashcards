@@ -23,7 +23,7 @@
       <!--create a new card computed-->
       <button v-on:click="addCard()">Add a New Card</button>
       <!--error display none? to show only when one or both fields above is empty-->
-      <span class="error">Oops! Flashcards need a front and a back.</span>
+      <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
     <ul class="flashcard-list">

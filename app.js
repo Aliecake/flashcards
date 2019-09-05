@@ -27,7 +27,8 @@ const cards = [
     data: {
       cards: cards,
       front: '',
-      back: ''
+      back: '',
+      error: false
     },
     methods: {
       //flipCard
@@ -38,11 +39,15 @@ const cards = [
         cards.splice(index, 1);
       },
       addCard: function() {
-        cards.push({
-          front: this.front,
-          back: this.back,
-          flipped: false
-        });
+        if (!this._data.front || !this._data.back) {
+          this.error = !this.error;
+        } else {
+          cards.push({
+            front: this.front,
+            back: this.back,
+            flipped: false
+          });
+        }
       }
     }
   });
