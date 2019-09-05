@@ -29,14 +29,9 @@
     <ul class="flashcard-list">
       <li v-for="(card, index) in cards" v-on:click="flipCard(card, index)">
         <transition name="flip">
-          <p v-if="!card.flipped" class="card" key="front">
+          <p class="card" v-bind:key="card.flipped">
               <span class="delete-card" v-on:click="deleteCard(index)">X</span>
-              {{ card.front }}
-          </p>
-          <!--back of card, class change-->
-          <p v-else class="card" key="back">
-              <span class="delete-card" v-on:click="deleteCard(index)">X</span>
-              {{ card.back }}
+              {{ !card.flipped? card.front : card.back }}
           </p>
       </transition>
       </li>
